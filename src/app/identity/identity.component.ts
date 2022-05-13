@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-identity',
@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./identity.component.css']
 })
 export class IdentityComponent implements OnInit {
+  @Input () identity: any;
 
   constructor() { }
 
