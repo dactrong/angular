@@ -12,8 +12,11 @@
     <button class="btn btn-primary" (click)="onClickBtn()">{{showStatus ? 'Ẩn ' : 'Hiện'}}  bảng</button>
     <div>
       <label for="input"> Sự kiện cho input</label>
-      <input type="text" id ="input" (input) ="onInput ()" >
+      <input type="text" id ="input" (input) ="onInput ($event,'SK')" >
     </div>
+    <form action="">
+      
+    </form>
   </div>
   <div>
     Tên SV: <app-name [name]="names"></app-name>

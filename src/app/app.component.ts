@@ -64,8 +64,8 @@ export class AppComponent {
     this.showStatus = !this.showStatus;
 
   }
-  onInput(){
-    console.log("logogog");
+  onInput(event:any, inputName:string){
+    console.log(inputName,event.target.value);
     
   }
 }
