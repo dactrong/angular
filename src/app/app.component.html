@@ -3,8 +3,18 @@
  
 
 <div class="container">
-  <app-table  [champions] ="champs"></app-table>
+ 
+
   <app-name></app-name>
+
+  <div>
+    <p>Su kien</p>
+    <button class="btn btn-primary" (click)="onClickBtn()">{{showStatus ? 'Ẩn ' : 'Hiện'}}  bảng</button>
+    <div>
+      <label for="input"> Sự kiện cho input</label>
+      <input type="text" id ="input" (input) ="onInput ()" >
+    </div>
+  </div>
   <div>
     Tên SV: <app-name [name]="names"></app-name>
   </div>
@@ -12,35 +22,8 @@
     MA SV: <app-identity [identity]="identitys"></app-identity>
   </div>
   <h1>Champions LMHT</h1>
-  <div>
-    <table class ="table">
-       <thead>
-         <tr>
-          <th>Name</th>
-          <th>Tấn công</th>
-          <th>Phong thủ</th>
-          <th>Tốc độ</th>
-          <th>Giá</th>
-          <th>Avatar</th>
-         </tr>
-       </thead>
-       <tbody>
-         <tr *ngFor="let champs of champs">
-           <td>{{ champs.name }}</td>
-           <td><app-dame [dame] = "champs.dame"></app-dame></td>
-
-           <td>{{ champs.defend }}</td>
-           <td>{{ champs.speed }}</td>
-           <td>{{ champs.price }}</td>
-             <td>
-               <app-avatar [price] = "champs.price" src = "{{ champs.avatar }}"></app-avatar>
-               </td>
-             <!-- <td><img [src]="champs.avatar" alt="" height='100'></td> -->
-
-         </tr>
-       </tbody>
-    </table>
-  </div>
+   <!-- <app-table  [champions] ="champs" class="{{showStatus ? 'db' : 'dn'}}"></app-table> -->
+   <app-table  [champions] ="champs"*ngIf="showStatus"></app-table>
 </div>
 
 <router-outlet></router-outlet>

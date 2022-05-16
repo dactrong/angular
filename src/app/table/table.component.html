@@ -1,1 +1,30 @@
 
+<div>
+    <table class ="table">
+       <thead>
+         <tr>
+          <th>Name</th>
+          <th>Tấn công</th>
+          <th>Phong thủ</th>
+          <th>Tốc độ</th>
+          <th>Giá</th>
+          <th>Avatar</th>
+         </tr>
+       </thead>
+       <tbody>
+         <tr *ngFor="let champs of champs">
+           <td>{{ champs.name }}</td>
+           <td><app-dame [dame] = "champs.dame"></app-dame></td>
+
+           <td>{{ champs.defend }}</td>
+           <td>{{ champs.speed }}</td>
+           <td>{{ champs.price }}</td>
+             <td>
+               <app-avatar [price] = "champs.price" src = "{{ champs.avatar }}"></app-avatar>
+               </td>
+             <!-- <td><img [src]="champs.avatar" alt="" height='100'></td> -->
+
+         </tr>
+       </tbody>
+    </table>
+  </div>
