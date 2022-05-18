@@ -1,16 +1,18 @@
 
 <p>{{userForm.value | json}}</p>
-<form action="" #userForm="ngForm">
+<form action="" #userForm="ngForm" (ngSubmit)="onSubmit(userForm.value)">
 
     <div class="form-group">
         <label for="">Tên User</label>
-        <input type="text" class="form-control" placeholder=" name" name="name" ngModel>
+        <input type="text" class="form-control" placeholder=" name" name="name" ngModel required #name="ngModel">
+        <span>{{name.errors |json}}</span>
     </div>
     <div class="form-group">
         <label for="">Tuổi User</label>
-        <input type="number" class="form-control" placeholder=" name" name="age" ngModel>
+        <input type="number" class="form-control" placeholder=" name" name="age" ngModel required #age="ngModel"> 
+        <span>{{age.errors | json}}</span>
     </div> <br>
  <div>
-     <button class="btn btn-primary"> Submit</button>
+     <button class="btn btn-primary" [disabled]="!userForm.valid"> Submit</button>
  </div>
 </form>
