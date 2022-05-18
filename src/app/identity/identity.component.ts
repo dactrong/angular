@@ -6,9 +6,11 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./identity.component.css']
 })
 export class IdentityComponent implements OnInit {
-  @Input () identity: any;
-
-  constructor() { }
+  @Input() id: string;
+  constructor() {
+    // Định nghĩa giá trị mặc định cho kiểu string
+    this.id = '';
+  }
 
   ngOnInit(): void {
   }

@@ -1,6 +1,15 @@
-.dn{
-    display:none;
+.color-red {
+  color: red;
 }
-.db{
-    display:block;
+
+.color-blue {
+  color: blue;
+}
+
+.dn {
+  display: none;
+}
+
+.db {
+  display: block;
 }

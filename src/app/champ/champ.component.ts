@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-champ',
@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./champ.component.css']
 })
 export class ChampComponent implements OnInit {
-
+  @Input() champName: any;
   constructor() { }
 
   ngOnInit(): void {

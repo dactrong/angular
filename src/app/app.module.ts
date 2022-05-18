@@ -8,8 +8,9 @@ import { ChampComponent } from './champ/champ.component';
 import { TableComponent } from './table/table.component';
 import { NameComponent } from './name/name.component';
 import { IdentityComponent } from './identity/identity.component';
-import { DameComponent } from './dame/dame.component';
-import { AvatarComponent } from './avatar/avatar.component';
+import { TableAvatarComponent } from './table/table-avatar/table-avatar.component';
+import { FormComponent } from './form/form.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,13 +19,14 @@ import { AvatarComponent } from './avatar/avatar.component';
     TableComponent,
     NameComponent,
     IdentityComponent,
-    DameComponent,
-    AvatarComponent
+    TableAvatarComponent,
+    FormComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

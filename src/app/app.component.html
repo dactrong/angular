@@ -1,32 +1,62 @@
-
-
- 
-
 <div class="container">
- 
-
-  <app-name></app-name>
-
+  <p>Agular form</p>
+  <app-form></app-form>
   <div>
-    <p>Su kien</p>
-    <button class="btn btn-primary" (click)="onClickBtn()">{{showStatus ? 'Ẩn ' : 'Hiện'}}  bảng</button>
+    <p>Sự kiện</p>
+    <button class="btn btn-primary" (click)="onClickBtn()">
+      {{showStatus ? 'Ẩn' : 'Hiện'}} bảng dữ liệu
+    </button>
     <div>
-      <label for="input"> Sự kiện cho input</label>
-      <input type="text" id ="input" (input) ="onInput ($event,'SK')" >
+      <label for="input">Name</label>
+      <input type="text" id="input" (input)="onInput($event, 'name')"
+        [value]="inputValue.name"
+      >
     </div>
-    <form action="">
-      
-    </form>
+    <div>
+      <label for="input">Avatar</label>
+      <input type="text" id="input" (input)="onInput($event, 'avatar')"
+        [value]="inputValue.avatar"
+      >
+    </div>
+    <div>
+      <label for="input">Speed</label>
+      <input type="text" id="input" (input)="onInput($event, 'speed')"
+        [value]="inputValue.speed"
+      >
+    </div>
+    <div>
+      <button class="btn btn-success" (click)="onSubmit()">
+        Submit
+      </button>
+    </div>
   </div>
-  <div>
-    Tên SV: <app-name [name]="names"></app-name>
-  </div>
-  <div>
-    MA SV: <app-identity [identity]="identitys"></app-identity>
-  </div>
-  <h1>Champions LMHT</h1>
-   <!-- <app-table  [champions] ="champs" class="{{showStatus ? 'db' : 'dn'}}"></app-table> -->
-   <app-table  [champions] ="champs"*ngIf="showStatus"></app-table>
-</div>
 
-<router-outlet></router-outlet>
+<!-- ----------------------- -->
+  <div>
+    Tên SV: <app-name [name]="studentName" ></app-name>
+  </div>
+  <div>
+    MSV: <app-identity [id]="studentId"></app-identity>
+  </div>
+
+
+  <h1>Champions LMHT</h1>
+
+  <div>
+    <!--
+      B1: kiểm tra selector của component con
+      B2: đưa component con vào component cha <app-table></app-table>
+      B3: kiểm tra xem phần html của component con đã hiển thị chưa
+      B4: truyền dữ liệu tĩnh <app-table a="123" ></app-table>
+      B5: đổi sang truyền dữ liệu động <app-table [champions]="champs" ></app-table>
+     -->
+    <!-- <app-table
+      [champions]="champs"
+      class="{{showStatus ? 'db' : 'dn'}}"
+    ></app-table> -->
+    <app-table
+      [champions]="champs"
+      *ngIf="showStatus"
+    ></app-table>
+  </div>
+</div>

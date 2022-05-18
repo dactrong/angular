@@ -5,68 +5,96 @@ import { Component } from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+// Đây là nơi định nghĩa component và logic
 export class AppComponent {
-  title = 'angular-web16301';
+  // Định nghĩa các biến,
+  // Các biến này có thể nhận được giá trị ở file html
+  title = 'angular we16301 FPT Poly';
 
+  // Khai báo thêm 1 số biến để html sử dụng
+  name = 'tuannda3';
+  class = 'we16301';
 
-  name = 'Nguyễn Đắc Trọng';
-
-  class = 'web16301';
-
-  student = [
+  students = [
     {
-      name: 'trongndph13723',
-      id: "PH13723",
+      name: 'tuannda1',
+      id: 'PH1111',
       status: 0
     },
     {
-      name: 'trongndph',
-      id: "PH13724",
+      name: 'tuannda2',
+      id: 'PH2222',
       status: 1
     },
     {
-      name: 'trongndph13',
-      id: "PH13725",
+      name: 'tuannda3',
+      id: 'PH3333',
       status: 1
     }
+  ];
 
-  ]
   champs = [
     {
-      name: 'quỳnh',
-      dame: 50,
-      defend: 100,
-      speed: 10,
-      price: 5000,
-      avatar: 'https://th.bing.com/th/id/R.5f1af41b45dbd865cf884801cf01de30?rik=4hs%2fqgSwvaEraQ&riu=http%3a%2f%2f1.bp.blogspot.com%2f-2ETVZXv_2-w%2fVJI71FjhngI%2fAAAAAAAAKxE%2f6p7GSL7JCpo%2fs1600%2fyasuo_wallpaper_by_wacalac-d6yqvmu.jpg&ehk=2FUCGNGerh67LehEM%2blaQd37ctTMQXtxdFofyl%2b4g%2bs%3d&risl=&pid=ImgRaw&r=0'
-
-    },
-    {
-      name: 'quỳnh tròn',
-      dame: 1000,
-      defend: 100,
-      speed: 10,
-      price: 2000,
-      avatar: 'https://th.bing.com/th/id/R.5f1af41b45dbd865cf884801cf01de30?rik=4hs%2fqgSwvaEraQ&riu=http%3a%2f%2f1.bp.blogspot.com%2f-2ETVZXv_2-w%2fVJI71FjhngI%2fAAAAAAAAKxE%2f6p7GSL7JCpo%2fs1600%2fyasuo_wallpaper_by_wacalac-d6yqvmu.jpg&ehk=2FUCGNGerh67LehEM%2blaQd37ctTMQXtxdFofyl%2b4g%2bs%3d&risl=&pid=ImgRaw&r=0'
-
-
-
+      name: 'Lucian',
+      dame: 400,
+      defend: 200,
+      speed: 100,
+      price: 6300,
+      avatar: 'https://oneesports.blob.core.windows.net/cdn-data/sites/4/2021/08/pulsefire-lucian-lien-minh-huyen-thoai1.jpg'
     }
-  ]
-  names = 'NGuyễn Đắc Trọng'
-  identitys = 'Ph13723'
+  ];
+  // Định nghĩa biến để truyền sang file html
+  studentName = 'trongndph13723';
+  studentId = 'PH123456';
 
   // Sự kiện
-  // Lưu trạng thái hiện thị bảng
+  // Biến lưu trạng thái hiển thị bảng
   showStatus = true;
   onClickBtn() {
     console.log("Btn clicked!");
     this.showStatus = !this.showStatus;
-
   }
-  onInput(event:any, inputName:string){
-    console.log(inputName,event.target.value);
-    
+
+  // Sự kiện hiển thị giá trị của các ô input
+  inputValue = {
+    name: '',
+    avatar: '',
+    dame: '',
+    defend: '',
+    speed: '',
+    price: '',
+  };
+  onInput(event: any, key: 'name' | 'avatar' | 'speed' | 'dame' | 'defend' | 'price') {
+    this.inputValue[key] = event.target.value;
+  }
+  // inputName = '';
+  // onInputName(event: any) {
+  //   this.inputValue['name'] = event.target.value;
+  // }
+  // inputAvatar = '';
+  // onInputAvatar(event: any) {
+  //   this.inputValue.avatar = event.target.value;
+  // }
+  onSubmit() {
+    console.log('Giá trị obj các ô input', this.inputValue);
+    // push obj this.input vào mảng champs để thêm 1 dòng dữ liệu mới
+    // inputValue sẽ có cấu trúc như obj trong mảng champs
+    // cần format lại obj theo đúng cấu trúc dữ liệu trong champs
+    this.champs.push({
+      ...this.inputValue,
+      dame: +this.inputValue.dame,
+      defend: +this.inputValue.defend,
+      speed: +this.inputValue.speed,
+      price: +this.inputValue.price,
+    });
+    // Gán lại giá trị default cho this.inputValue
+    this.inputValue = {
+      name: '',
+      avatar: '',
+      dame: '',
+      defend: '',
+      speed: '',
+      price: '',
+    };
   }
 }
-
