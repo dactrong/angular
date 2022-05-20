@@ -12,7 +12,7 @@ export class AppComponent {
   title = 'angular we16301 FPT Poly';
 
   // Khai báo thêm 1 số biến để html sử dụng
-  name = 'tuannda3';
+  name = 'trongndph13723';
   class = 'we16301';
 
   students = [
