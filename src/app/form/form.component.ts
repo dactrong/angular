@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-form',
@@ -11,28 +12,44 @@ export class FormComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  onEdit(id:number){
+    this.users = this.users.filter(item => item.id !== id);
+  }
   // trung gian dữ liệu của file ts vs form
   inputValues =
   {
-     name:'1',
-     age:0
+    
+     name:'',
+     age:0,
+     email:'',
+     phone:0
    }
 
   users = [
     {
+      id:1,
       name:'trongndph13723',
-      age:20
+      age:20,
+      email:'dactrong2001@gmail.com',
+      phone:0
     }
  
   ]
-  onSubmit(formData: {name: string, age: number}) {
+  onSubmit(usersForm:NgForm) {
     // console.log(formData);
+    const newUserIds = this.users
+    .map(user => user.id)
+    .sort((a:number, b:number) => b-a);
+    const maxId = newUserIds[0]
     // 1.Push nhập dwux liệu mopwis từ form vào mảng
-    this.users.push(formData)
+    this.users.push({...usersForm.value, id:maxId+1})
     // 2.Cập nhật giá trị của inputValues về defauld
-    this.inputValues={
+    usersForm.resetForm({
       name:'',
-      age:0
-    }
+      age:0,
+      email:'',
+      phone:0
+    })
+   
   }
 }
