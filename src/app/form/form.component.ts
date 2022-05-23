@@ -15,10 +15,13 @@ export class FormComponent implements OnInit {
   onEdit(id:number){
     this.users = this.users.filter(item => item.id !== id);
   }
+  onSua(user: any, id: number){
+    this.inputValues = user.find((item: any) => item.id===id)
+  }
   // trung gian dữ liệu của file ts vs form
   inputValues =
   {
-    
+    id:0,
      name:'',
      age:0,
      email:'',
@@ -45,6 +48,7 @@ export class FormComponent implements OnInit {
     this.users.push({...usersForm.value, id:maxId+1})
     // 2.Cập nhật giá trị của inputValues về defauld
     usersForm.resetForm({
+      id:0,
       name:'',
       age:0,
       email:'',
